@@ -424,7 +424,7 @@ FunctionalState Cal_touch_para( Coordinate * displayPtr,
 *********************************************************/ 
 int Touch_Calibrate(void)
 {
-    #if 1
+		  #if 1
     uint8_t i;
     u16 test_x=0, test_y=0;
     u16 gap_x=0, gap_y=0;

@@ -34,13 +34,13 @@ extern volatile unsigned char touch_flag;
   */
 int main(void)
 {	
+	uint16_t index;
 	/* 系统定时器 1us 定时初始化 */
   SysTick_Init();
   
   LCD_Init();	
   /* GRAM扫描方向为左下脚->右上角 */
   Lcd_GramScan(2);
-  LCD_Clear(0, 0, 320, 240, BACKGROUND);
   LCD_Clear(0, 0, 320, 240, RED);
   
 /*------------------------------------------------------------------------------------------------------*/
@@ -48,22 +48,56 @@ int main(void)
   /* 触摸屏IO和中断初始化 */
   Touch_Init();
 
-  /* 等待触摸屏校正完毕 */
-  while(Touch_Calibrate() !=0);
-  
-  /* 触摸取色板初始化 */
-  Palette_Init();
+	while(Touch_Calibrate());
   
 	while( 1 )
   {
-    if(touch_flag == 1)			/*如果触笔按下了*/
-    {
-      /*获取点的坐标*/
+     LCD_Clear(0, 0, 160, 240, WHITE);
+		 LCD_Clear(160, 0, 320, 240, BLACK);
+		
+		/*获取点的坐标*/
       if(Get_touch_point(&display, Read_2046_2(), &touch_para ) !=DISABLE)      
       {					
-        Palette_draw_point(display.x,display.y);	 										
+        if(display.x>0 && display.x<160)
+				{
+					for(index=100;index>0;index--)
+					{	}
+					if(display.x>0 && display.x<160)
+					{	
+					while(1)
+					{
+							LCD_Clear(0, 0, 320, 240, BLUE);
+							display.x=0;
+							Get_touch_point(&display, Read_2046_2(), &touch_para );
+							if(display.x>0 && display.x<160)
+							{
+								break;
+							}
+					}
+				}
+				}
+				
+				if(display.x>160 && display.x<320)
+				{
+					for(index=100;index>0;index--)
+					{	}
+					if(display.x>0 && display.x<160)
+					{
+					while(1)
+					{
+							LCD_Clear(0, 0, 320, 240, GREEN);
+						  display.x=0;
+							Get_touch_point(&display, Read_2046_2(), &touch_para );
+							if(display.x>160 && display.x<320)
+							{
+								break;
+							}
+					}
+				}
+				}
+					
       }
-    }		
+
   }
 }
 
