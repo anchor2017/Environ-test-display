@@ -19,6 +19,7 @@
 #include "bsp_ili9341_lcd.h"
 #include "bsp_SysTick.h"
 #include "bsp_touch.h"
+#include "bsp_adc.h"
 
 void Delay(__IO uint32_t nCount)	 //简单的延时函数
 {

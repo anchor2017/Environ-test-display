@@ -20,6 +20,7 @@
 "..\..\output\bsp_systick.o"
 "..\..\output\bsp_gpio_spi.o"
 "..\..\output\bsp_touch.o"
+"..\..\output\bsp_adc.o"
 --library_type=microlib --strict --scatter "..\..\Output\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

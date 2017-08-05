@@ -136,6 +136,25 @@ Section Cross References
     bsp_touch.o(i.XPT2046_WriteCMD) refers to stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
     bsp_touch.o(i.XPT2046_WriteCMD) refers to stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
     bsp_touch.o(i.XPT2046_WriteCMD) refers to bsp_touch.o(i.DelayUS) for DelayUS
+    bsp_adc.o(i.ADC1_GPIO_Config) refers to stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd) for RCC_AHBPeriphClockCmd
+    bsp_adc.o(i.ADC1_GPIO_Config) refers to stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
+    bsp_adc.o(i.ADC1_GPIO_Config) refers to stm32f10x_gpio.o(i.GPIO_Init) for GPIO_Init
+    bsp_adc.o(i.ADC1_Init) refers to bsp_adc.o(i.ADC1_GPIO_Config) for ADC1_GPIO_Config
+    bsp_adc.o(i.ADC1_Init) refers to bsp_adc.o(i.ADC1_Mode_Config) for ADC1_Mode_Config
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_dma.o(i.DMA_DeInit) for DMA_DeInit
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_dma.o(i.DMA_Init) for DMA_Init
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_dma.o(i.DMA_Cmd) for DMA_Cmd
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_Init) for ADC_Init
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_rcc.o(i.RCC_ADCCLKConfig) for RCC_ADCCLKConfig
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_RegularChannelConfig) for ADC_RegularChannelConfig
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_DMACmd) for ADC_DMACmd
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_Cmd) for ADC_Cmd
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_ResetCalibration) for ADC_ResetCalibration
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_GetResetCalibrationStatus) for ADC_GetResetCalibrationStatus
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_StartCalibration) for ADC_StartCalibration
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_GetCalibrationStatus) for ADC_GetCalibrationStatus
+    bsp_adc.o(i.ADC1_Mode_Config) refers to stm32f10x_adc.o(i.ADC_SoftwareStartConvCmd) for ADC_SoftwareStartConvCmd
+    bsp_adc.o(i.ADC1_Mode_Config) refers to bsp_adc.o(.data) for ADC_ConvertedValue
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -428,8 +447,12 @@ Removing Unused input sections from the image.
     Removing bsp_touch.o(i.Palette_Init), (204 bytes).
     Removing bsp_touch.o(i.Palette_draw_point), (188 bytes).
     Removing bsp_touch.o(i.Read_2046), (552 bytes).
+    Removing bsp_adc.o(i.ADC1_GPIO_Config), (48 bytes).
+    Removing bsp_adc.o(i.ADC1_Init), (12 bytes).
+    Removing bsp_adc.o(i.ADC1_Mode_Config), (224 bytes).
+    Removing bsp_adc.o(.data), (2 bytes).
 
-254 unused section(s) (total 10454 bytes) removed from the image.
+258 unused section(s) (total 10740 bytes) removed from the image.
 
 ==============================================================================
 
@@ -439,18 +462,18 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
@@ -481,6 +504,7 @@ Image Symbol Table
     ..\..\Libraries\FWlib\src\stm32f10x_usart.c 0x00000000   Number         0  stm32f10x_usart.o ABSOLUTE
     ..\..\User\Lcd\bsp_ili9341_lcd.c         0x00000000   Number         0  bsp_ili9341_lcd.o ABSOLUTE
     ..\..\User\SysTick\bsp_SysTick.c         0x00000000   Number         0  bsp_systick.o ABSOLUTE
+    ..\..\User\lcd\bsp_adc.c                 0x00000000   Number         0  bsp_adc.o ABSOLUTE
     ..\..\User\main.c                        0x00000000   Number         0  main.o ABSOLUTE
     ..\..\User\stm32f10x_it.c                0x00000000   Number         0  stm32f10x_it.o ABSOLUTE
     ..\..\User\touch\bsp_gpio_spi.c          0x00000000   Number         0  bsp_gpio_spi.o ABSOLUTE
@@ -792,39 +816,39 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x00000130   Data   RO            3    RESET               startup_stm32f10x_hd.o
-    0x08000130   0x00000000   Code   RO         2080  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x00000004   Code   RO         2099    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x00000004   Code   RO         2102    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x00000000   Code   RO         2104    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x00000000   Code   RO         2106    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x00000008   Code   RO         2107    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x00000000   Code   RO         2109    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x00000000   Code   RO         2111    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x00000004   Code   RO         2100    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000130   0x00000000   Code   RO         2111  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x00000004   Code   RO         2130    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x00000004   Code   RO         2133    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x00000000   Code   RO         2135    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x00000000   Code   RO         2137    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x00000008   Code   RO         2138    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x00000000   Code   RO         2140    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x00000000   Code   RO         2142    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x00000004   Code   RO         2131    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x08000144   0x00000024   Code   RO            4    .text               startup_stm32f10x_hd.o
-    0x08000168   0x00000024   Code   RO         2083    .text               mc_w.l(memseta.o)
-    0x0800018c   0x0000014e   Code   RO         2085    .text               mf_w.l(dadd.o)
-    0x080002da   0x000000e4   Code   RO         2087    .text               mf_w.l(dmul.o)
-    0x080003be   0x000000de   Code   RO         2089    .text               mf_w.l(ddiv.o)
-    0x0800049c   0x00000022   Code   RO         2091    .text               mf_w.l(dflti.o)
-    0x080004be   0x0000001a   Code   RO         2093    .text               mf_w.l(dfltui.o)
-    0x080004d8   0x00000032   Code   RO         2095    .text               mf_w.l(dfixui.o)
+    0x08000168   0x00000024   Code   RO         2114    .text               mc_w.l(memseta.o)
+    0x0800018c   0x0000014e   Code   RO         2116    .text               mf_w.l(dadd.o)
+    0x080002da   0x000000e4   Code   RO         2118    .text               mf_w.l(dmul.o)
+    0x080003be   0x000000de   Code   RO         2120    .text               mf_w.l(ddiv.o)
+    0x0800049c   0x00000022   Code   RO         2122    .text               mf_w.l(dflti.o)
+    0x080004be   0x0000001a   Code   RO         2124    .text               mf_w.l(dfltui.o)
+    0x080004d8   0x00000032   Code   RO         2126    .text               mf_w.l(dfixui.o)
     0x0800050a   0x00000002   PAD
-    0x0800050c   0x00000028   Code   RO         2097    .text               mf_w.l(cdcmple.o)
-    0x08000534   0x0000001e   Code   RO         2113    .text               mc_w.l(llshl.o)
-    0x08000552   0x00000020   Code   RO         2115    .text               mc_w.l(llushr.o)
-    0x08000572   0x00000024   Code   RO         2117    .text               mc_w.l(llsshr.o)
-    0x08000596   0x00000000   Code   RO         2119    .text               mc_w.l(iusefp.o)
-    0x08000596   0x000000b6   Code   RO         2120    .text               mf_w.l(depilogue.o)
-    0x0800064c   0x00000024   Code   RO         2122    .text               mc_w.l(init.o)
-    0x08000670   0x00000004   Code   RO         1747    i.BusFault_Handler  stm32f10x_it.o
-    0x08000674   0x00000164   Code   RO         1982    i.Cal_touch_para    bsp_touch.o
-    0x080007d8   0x00000002   Code   RO         1748    i.DebugMon_Handler  stm32f10x_it.o
-    0x080007da   0x00000020   Code   RO         1983    i.DelayUS           bsp_touch.o
+    0x0800050c   0x00000028   Code   RO         2128    .text               mf_w.l(cdcmple.o)
+    0x08000534   0x0000001e   Code   RO         2144    .text               mc_w.l(llshl.o)
+    0x08000552   0x00000020   Code   RO         2146    .text               mc_w.l(llushr.o)
+    0x08000572   0x00000024   Code   RO         2148    .text               mc_w.l(llsshr.o)
+    0x08000596   0x00000000   Code   RO         2150    .text               mc_w.l(iusefp.o)
+    0x08000596   0x000000b6   Code   RO         2151    .text               mf_w.l(depilogue.o)
+    0x0800064c   0x00000024   Code   RO         2153    .text               mc_w.l(init.o)
+    0x08000670   0x00000004   Code   RO         1750    i.BusFault_Handler  stm32f10x_it.o
+    0x08000674   0x00000164   Code   RO         1985    i.Cal_touch_para    bsp_touch.o
+    0x080007d8   0x00000002   Code   RO         1751    i.DebugMon_Handler  stm32f10x_it.o
+    0x080007da   0x00000020   Code   RO         1986    i.DelayUS           bsp_touch.o
     0x080007fa   0x00000002   PAD
-    0x080007fc   0x00000028   Code   RO         1927    i.Delay_us          bsp_systick.o
-    0x08000824   0x00000034   Code   RO         1984    i.DrawCross         bsp_touch.o
-    0x08000858   0x0000001c   Code   RO         1749    i.EXTI4_IRQHandler  stm32f10x_it.o
+    0x080007fc   0x00000028   Code   RO         1930    i.Delay_us          bsp_systick.o
+    0x08000824   0x00000034   Code   RO         1987    i.DrawCross         bsp_touch.o
+    0x08000858   0x0000001c   Code   RO         1752    i.EXTI4_IRQHandler  stm32f10x_it.o
     0x08000874   0x0000000c   Code   RO          508    i.EXTI_ClearITPendingBit  stm32f10x_exti.o
     0x08000880   0x00000028   Code   RO          512    i.EXTI_GetITStatus  stm32f10x_exti.o
     0x080008a8   0x00000094   Code   RO          513    i.EXTI_Init         stm32f10x_exti.o
@@ -835,59 +859,59 @@ Memory Map of the image
     0x08000a98   0x00000116   Code   RO          567    i.GPIO_Init         stm32f10x_gpio.o
     0x08000bae   0x00000012   Code   RO          571    i.GPIO_ReadInputDataBit  stm32f10x_gpio.o
     0x08000bc0   0x00000004   Code   RO          574    i.GPIO_ResetBits    stm32f10x_gpio.o
-    0x08000bc4   0x00000080   Code   RO         1957    i.GPIO_SPI_Config   bsp_gpio_spi.o
+    0x08000bc4   0x00000080   Code   RO         1960    i.GPIO_SPI_Config   bsp_gpio_spi.o
     0x08000c44   0x00000004   Code   RO          575    i.GPIO_SetBits      stm32f10x_gpio.o
-    0x08000c48   0x000000ec   Code   RO         1985    i.Get_touch_point   bsp_touch.o
-    0x08000d34   0x00000004   Code   RO         1750    i.HardFault_Handler  stm32f10x_it.o
-    0x08000d38   0x0000006c   Code   RO         1819    i.LCD_Clear         bsp_ili9341_lcd.o
-    0x08000da4   0x00000068   Code   RO         1820    i.LCD_DisNum        bsp_ili9341_lcd.o
-    0x08000e0c   0x00000070   Code   RO         1821    i.LCD_DispChar      bsp_ili9341_lcd.o
-    0x08000e7c   0x0000003c   Code   RO         1822    i.LCD_DispStr       bsp_ili9341_lcd.o
-    0x08000eb8   0x0000005c   Code   RO         1823    i.LCD_FSMC_Config   bsp_ili9341_lcd.o
-    0x08000f14   0x000000c4   Code   RO         1824    i.LCD_GPIO_Config   bsp_ili9341_lcd.o
-    0x08000fd8   0x00000014   Code   RO         1826    i.LCD_Init          bsp_ili9341_lcd.o
-    0x08000fec   0x00000050   Code   RO         1827    i.LCD_OpenWindow    bsp_ili9341_lcd.o
-    0x0800103c   0x000001e8   Code   RO         1829    i.LCD_REG_Config    bsp_ili9341_lcd.o
-    0x08001224   0x00000028   Code   RO         1830    i.LCD_Rst           bsp_ili9341_lcd.o
-    0x0800124c   0x00000012   Code   RO         1833    i.Lcd_Delay         bsp_ili9341_lcd.o
+    0x08000c48   0x000000ec   Code   RO         1988    i.Get_touch_point   bsp_touch.o
+    0x08000d34   0x00000004   Code   RO         1753    i.HardFault_Handler  stm32f10x_it.o
+    0x08000d38   0x0000006c   Code   RO         1822    i.LCD_Clear         bsp_ili9341_lcd.o
+    0x08000da4   0x00000068   Code   RO         1823    i.LCD_DisNum        bsp_ili9341_lcd.o
+    0x08000e0c   0x00000070   Code   RO         1824    i.LCD_DispChar      bsp_ili9341_lcd.o
+    0x08000e7c   0x0000003c   Code   RO         1825    i.LCD_DispStr       bsp_ili9341_lcd.o
+    0x08000eb8   0x0000005c   Code   RO         1826    i.LCD_FSMC_Config   bsp_ili9341_lcd.o
+    0x08000f14   0x000000c4   Code   RO         1827    i.LCD_GPIO_Config   bsp_ili9341_lcd.o
+    0x08000fd8   0x00000014   Code   RO         1829    i.LCD_Init          bsp_ili9341_lcd.o
+    0x08000fec   0x00000050   Code   RO         1830    i.LCD_OpenWindow    bsp_ili9341_lcd.o
+    0x0800103c   0x000001e8   Code   RO         1832    i.LCD_REG_Config    bsp_ili9341_lcd.o
+    0x08001224   0x00000028   Code   RO         1833    i.LCD_Rst           bsp_ili9341_lcd.o
+    0x0800124c   0x00000012   Code   RO         1836    i.Lcd_Delay         bsp_ili9341_lcd.o
     0x0800125e   0x00000002   PAD
-    0x08001260   0x00000108   Code   RO         1834    i.Lcd_GramScan      bsp_ili9341_lcd.o
-    0x08001368   0x00000004   Code   RO         1751    i.MemManage_Handler  stm32f10x_it.o
-    0x0800136c   0x00000002   Code   RO         1752    i.NMI_Handler       stm32f10x_it.o
+    0x08001260   0x00000108   Code   RO         1837    i.Lcd_GramScan      bsp_ili9341_lcd.o
+    0x08001368   0x00000004   Code   RO         1754    i.MemManage_Handler  stm32f10x_it.o
+    0x0800136c   0x00000002   Code   RO         1755    i.NMI_Handler       stm32f10x_it.o
     0x0800136e   0x00000002   PAD
     0x08001370   0x00000070   Code   RO           86    i.NVIC_Init         misc.o
     0x080013e0   0x00000014   Code   RO           87    i.NVIC_PriorityGroupConfig  misc.o
-    0x080013f4   0x00000002   Code   RO         1753    i.PendSV_Handler    stm32f10x_it.o
+    0x080013f4   0x00000002   Code   RO         1756    i.PendSV_Handler    stm32f10x_it.o
     0x080013f6   0x00000002   PAD
     0x080013f8   0x00000020   Code   RO          880    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
     0x08001418   0x00000020   Code   RO          883    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08001438   0x00000134   Code   RO         1989    i.Read_2046_2       bsp_touch.o
-    0x0800156c   0x00000002   Code   RO         1754    i.SVC_Handler       stm32f10x_it.o
+    0x08001438   0x00000134   Code   RO         1992    i.Read_2046_2       bsp_touch.o
+    0x0800156c   0x00000002   Code   RO         1757    i.SVC_Handler       stm32f10x_it.o
     0x0800156e   0x00000008   Code   RO           24    i.SetSysClock       system_stm32f10x.o
     0x08001576   0x00000002   PAD
     0x08001578   0x000000e0   Code   RO           25    i.SetSysClockTo72   system_stm32f10x.o
-    0x08001658   0x00000008   Code   RO         1755    i.SysTick_Handler   stm32f10x_it.o
-    0x08001660   0x0000007c   Code   RO         1928    i.SysTick_Init      bsp_systick.o
+    0x08001658   0x00000008   Code   RO         1758    i.SysTick_Handler   stm32f10x_it.o
+    0x08001660   0x0000007c   Code   RO         1931    i.SysTick_Init      bsp_systick.o
     0x080016dc   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
-    0x0800173c   0x0000004c   Code   RO         1958    i.TP_INT_GPIO_Config  bsp_gpio_spi.o
-    0x08001788   0x00000026   Code   RO         1959    i.TP_INT_NVIC_Config  bsp_gpio_spi.o
+    0x0800173c   0x0000004c   Code   RO         1961    i.TP_INT_GPIO_Config  bsp_gpio_spi.o
+    0x08001788   0x00000026   Code   RO         1962    i.TP_INT_NVIC_Config  bsp_gpio_spi.o
     0x080017ae   0x00000002   PAD
-    0x080017b0   0x00000018   Code   RO         1929    i.TimingDelay_Decrement  bsp_systick.o
-    0x080017c8   0x00000358   Code   RO         1990    i.Touch_Calibrate   bsp_touch.o
-    0x08001b20   0x00000026   Code   RO         1991    i.Touch_GetAdXY     bsp_touch.o
-    0x08001b46   0x00000008   Code   RO         1992    i.Touch_Init        bsp_touch.o
-    0x08001b4e   0x00000004   Code   RO         1756    i.UsageFault_Handler  stm32f10x_it.o
-    0x08001b52   0x00000010   Code   RO         1993    i.XPT2046_ReadAdc   bsp_touch.o
+    0x080017b0   0x00000018   Code   RO         1932    i.TimingDelay_Decrement  bsp_systick.o
+    0x080017c8   0x00000358   Code   RO         1993    i.Touch_Calibrate   bsp_touch.o
+    0x08001b20   0x00000026   Code   RO         1994    i.Touch_GetAdXY     bsp_touch.o
+    0x08001b46   0x00000008   Code   RO         1995    i.Touch_Init        bsp_touch.o
+    0x08001b4e   0x00000004   Code   RO         1759    i.UsageFault_Handler  stm32f10x_it.o
+    0x08001b52   0x00000010   Code   RO         1996    i.XPT2046_ReadAdc   bsp_touch.o
     0x08001b62   0x00000002   PAD
-    0x08001b64   0x0000005c   Code   RO         1994    i.XPT2046_ReadCMD   bsp_touch.o
-    0x08001bc0   0x00000064   Code   RO         1995    i.XPT2046_WriteCMD  bsp_touch.o
-    0x08001c24   0x0000000e   Code   RO         2126    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08001c32   0x00000002   Code   RO         2127    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08001c34   0x0000000e   Code   RO         2128    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08001b64   0x0000005c   Code   RO         1997    i.XPT2046_ReadCMD   bsp_touch.o
+    0x08001bc0   0x00000064   Code   RO         1998    i.XPT2046_WriteCMD  bsp_touch.o
+    0x08001c24   0x0000000e   Code   RO         2157    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08001c32   0x00000002   Code   RO         2158    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08001c34   0x0000000e   Code   RO         2159    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x08001c42   0x00000002   PAD
     0x08001c44   0x00000154   Code   RO         1719    i.main              main.o
-    0x08001d98   0x00000474   Data   RO         1835    .constdata          bsp_ili9341_lcd.o
-    0x0800220c   0x00000020   Data   RO         2124    Region$$Table       anon$$obj.o
+    0x08001d98   0x00000474   Data   RO         1838    .constdata          bsp_ili9341_lcd.o
+    0x0800220c   0x00000020   Data   RO         2155    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000004b8, Max: 0x00010000, ABSOLUTE)
@@ -895,13 +919,13 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000014   Data   RW           28    .data               system_stm32f10x.o
-    0x20000014   0x00000001   Data   RW         1757    .data               stm32f10x_it.o
+    0x20000014   0x00000001   Data   RW         1760    .data               stm32f10x_it.o
     0x20000015   0x00000003   PAD
-    0x20000018   0x00000004   Data   RW         1930    .data               bsp_systick.o
+    0x20000018   0x00000004   Data   RW         1933    .data               bsp_systick.o
     0x2000001c   0x00000004   PAD
-    0x20000020   0x0000004e   Data   RW         1997    .data               bsp_touch.o
+    0x20000020   0x0000004e   Data   RW         2000    .data               bsp_touch.o
     0x2000006e   0x00000002   PAD
-    0x20000070   0x00000048   Zero   RW         1996    .bss                bsp_touch.o
+    0x20000070   0x00000048   Zero   RW         1999    .bss                bsp_touch.o
     0x200000b8   0x00000400   Zero   RW            1    STACK               startup_stm32f10x_hd.o
 
 

@@ -14,3 +14,4 @@
 ..\..\output\main.o: ..\..\User\Lcd\bsp_ili9341_lcd.h
 ..\..\output\main.o: ..\..\User\SysTick\bsp_SysTick.h
 ..\..\output\main.o: ..\..\User\touch\bsp_touch.h
+..\..\output\main.o: ..\..\User\Lcd\bsp_adc.h
