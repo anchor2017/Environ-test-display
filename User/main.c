@@ -20,6 +20,14 @@
 #include "bsp_SysTick.h"
 #include "bsp_touch.h"
 #include "bsp_adc.h"
+#include "bsp_usart1.h"
+#include "bsp_ds18b20.h"
+
+// ADC1转换的电压值通过MDA方式传到SRAM
+extern __IO uint16_t ADC_ConvertedValue;
+
+// 局部变量，用于保存转换计算后的电压值 	 
+float ADC_ConvertedValueLocal;
 
 void Delay(__IO uint32_t nCount)	 //简单的延时函数
 {
@@ -38,23 +46,42 @@ int main(void)
 	uint16_t index;
 	/* 系统定时器 1us 定时初始化 */
   SysTick_Init();
-  
+	  
   LCD_Init();	
   /* GRAM扫描方向为左下脚->右上角 */
   Lcd_GramScan(2);
   LCD_Clear(0, 0, 320, 240, RED);
-  
+  ADC1_Init();
 /*------------------------------------------------------------------------------------------------------*/
   
   /* 触摸屏IO和中断初始化 */
   Touch_Init();
-
+	DS18B20_Init();
+	
+	while(1)
+	{
+		printf("this is a debug info");
+		ADC_ConvertedValueLocal =(float) ADC_ConvertedValue/4096*3.3; // 读取转换的AD值
+		printf("\r\n CO2: %lf \r\n", ADC_ConvertedValueLocal);
+		
+		printf("\r\n CO2: %.1f \r\n", DS18B20_Get_Temp());
+		Delay(0xffffee);
+	}
+		
 	while(Touch_Calibrate());
   
 	while( 1 )
   {
      LCD_Clear(0, 0, 160, 240, WHITE);
 		 LCD_Clear(160, 0, 320, 240, BLACK);
+		
+		while(1)
+		{
+			ADC_ConvertedValueLocal =(float) ADC_ConvertedValue/4096*3.3; // 读取转换的AD值
+			LCD_DisNum(100, 100, ADC_ConvertedValueLocal, RED);
+			Delay(0xfffff);
+			LCD_DisNum(60, 60, 11111, RED);
+		}
 		
 		/*获取点的坐标*/
       if(Get_touch_point(&display, Read_2046_2(), &touch_para ) !=DISABLE)      

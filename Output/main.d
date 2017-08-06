@@ -15,3 +15,6 @@
 ..\..\output\main.o: ..\..\User\SysTick\bsp_SysTick.h
 ..\..\output\main.o: ..\..\User\touch\bsp_touch.h
 ..\..\output\main.o: ..\..\User\Lcd\bsp_adc.h
+..\..\output\main.o: ..\..\User\usart\bsp_usart1.h
+..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+..\..\output\main.o: ..\..\User\ds18b20\bsp_ds18b20.h

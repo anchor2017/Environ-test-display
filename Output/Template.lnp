@@ -21,6 +21,8 @@
 "..\..\output\bsp_gpio_spi.o"
 "..\..\output\bsp_touch.o"
 "..\..\output\bsp_adc.o"
+"..\..\output\bsp_usart1.o"
+"..\..\output\bsp_ds18b20.o"
 --library_type=microlib --strict --scatter "..\..\Output\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
