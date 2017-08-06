@@ -1,122 +1,151 @@
-/**
-  ******************************************************************************
-  * @file    bsp_xxx.c
-  * @author  fire
-  * @version V1.0
-  * @date    2013-xx-xx
-  * @brief   adc1 应用bsp / DMA 模式
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火 ISO-MINI STM32 开发板 
-  * 论坛    :http://www.chuxue123.com
-  * 淘宝    :http://firestm32.taobao.com
-  *
-  ******************************************************************************
-  */ 
-  
 #include "bsp_adc.h"
-#include "stm32f10x_adc.h"
-#include "stm32f10x_dma.h"
 
-#define ADC1_DR_Address    ((u32)0x40012400+0x4c)
-
-__IO uint16_t ADC_ConvertedValue;
-__IO uint16_t ADC_ConvertedLiValue;
-//__IO u16 ADC_ConvertedValueLocal;
+__IO uint16_t ADC_ConvertedValue[NOFCHANEL]={0,0,0,0};
 
 /**
-  * @brief  使能ADC1和DMA1的时钟，初始化PC.0
+  * @brief  ADC GPIO 初始化
   * @param  无
   * @retval 无
   */
-static void ADC1_GPIO_Config(void)
+static void ADCx_GPIO_Config(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
-	/* Enable DMA clock */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+	// 打开 ADC IO端口时钟
+	ADC_GPIO_APBxClock_FUN ( ADC_GPIO_CLK, ENABLE );
 	
-	/* Enable ADC1 and GPIOC clock */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_GPIOC, ENABLE);
-	
-	/* Configure PC.0  as analog input */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+	// 配置 ADC IO 引脚模式
+	GPIO_InitStructure.GPIO_Pin = 	ADC_PIN1|
+																		ADC_PIN2|
+																		ADC_PIN3|
+																		ADC_PIN4|
+																		ADC_PIN5|
+																		ADC_PIN6;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-	GPIO_Init(GPIOC, &GPIO_InitStructure);				// PC0,输入时不用设置速率
+	
+	// 初始化 ADC IO
+	GPIO_Init(ADC_PORT, &GPIO_InitStructure);				
 }
 
 /**
-  * @brief  配置ADC1的工作模式为MDA模式
+  * @brief  配置ADC工作模式
   * @param  无
   * @retval 无
   */
-static void ADC1_Mode_Config(void)
+static void ADCx_Mode_Config(void)
 {
 	DMA_InitTypeDef DMA_InitStructure;
 	ADC_InitTypeDef ADC_InitStructure;
 	
-	/* DMA channel1 configuration */
-	DMA_DeInit(DMA1_Channel1);
+	// 打开DMA时钟
+	RCC_AHBPeriphClockCmd(ADC_DMA_CLK, ENABLE);
+	// 打开ADC时钟
+	ADC_APBxClock_FUN ( ADC_CLK, ENABLE );
 	
-	DMA_InitStructure.DMA_PeripheralBaseAddr = ADC1_DR_Address;	 			//ADC地址
-	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&ADC_ConvertedValue;	//内存地址
+	// 复位DMA控制器
+	DMA_DeInit(ADC_DMA_CHANNEL);
+	
+	// 配置 DMA 初始化结构体
+	// 外设基址为：ADC 数据寄存器地址
+	DMA_InitStructure.DMA_PeripheralBaseAddr = ( u32 ) ( & ( ADC_x->DR ) );
+	
+	// 存储器地址
+	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)ADC_ConvertedValue;
+	
+	// 数据源来自外设
 	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
-	DMA_InitStructure.DMA_BufferSize = 1;
-	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;	//外设地址固定
-	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Disable;  				//内存地址固定
-	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;	//半字
+	
+	// 缓冲区大小，应该等于数据目的地的大小
+	DMA_InitStructure.DMA_BufferSize = NOFCHANEL;
+	
+	// 外设寄存器只有一个，地址不用递增
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+
+	// 存储器地址递增
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
+	
+	// 外设数据大小为半字，即两个字节
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+	
+	// 内存数据大小也为半字，跟外设数据大小相同
 	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;										//循环传输
+	
+	// 循环传输模式
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;	
+
+	// DMA 传输通道优先级为高，当使用一个DMA通道时，优先级设置不影响
 	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+	
+	// 禁止存储器到存储器模式，因为是从外设到存储器
 	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
-	DMA_Init(DMA1_Channel1, &DMA_InitStructure);
 	
-	/* Enable DMA channel1 */
-	DMA_Cmd(DMA1_Channel1, ENABLE);
+	// 初始化DMA
+	DMA_Init(ADC_DMA_CHANNEL, &DMA_InitStructure);
 	
-	/* ADC1 configuration */	
-	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;			//独立ADC模式
-	ADC_InitStructure.ADC_ScanConvMode = DISABLE ; 	 				//禁止扫描模式，扫描模式用于多通道采集
-	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;			//开启连续转换模式，即不停地进行ADC转换
-	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	//不使用外部触发转换
-	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right; 	//采集数据右对齐
-	ADC_InitStructure.ADC_NbrOfChannel = 1;	 								//要转换的通道数目1
-	ADC_Init(ADC1, &ADC_InitStructure);
+	// 使能 DMA 通道
+	DMA_Cmd(ADC_DMA_CHANNEL , ENABLE);
 	
-	/*配置ADC时钟，为PCLK2的8分频，即9MHz*/
+	// ADC 模式配置
+	// 只使用一个ADC，属于单模式
+	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+	
+	// 扫描模式
+	ADC_InitStructure.ADC_ScanConvMode = ENABLE ; 
+
+	// 连续转换模式
+	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
+
+	// 不用外部触发转换，软件开启即可
+	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+
+	// 转换结果右对齐
+	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+	
+	// 转换通道个数
+	ADC_InitStructure.ADC_NbrOfChannel = NOFCHANEL;	
+		
+	// 初始化ADC
+	ADC_Init(ADC_x, &ADC_InitStructure);
+	
+	// 配置ADC时钟Ｎ狿CLK2的8分频，即9MHz
 	RCC_ADCCLKConfig(RCC_PCLK2_Div8); 
-	/*配置ADC1的通道11为55.	5个采样周期，序列为1 */ 
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 1, ADC_SampleTime_55Cycles5);
 	
-	/* Enable ADC1 DMA */
-	ADC_DMACmd(ADC1, ENABLE);
+	// 配置ADC 通道的转换顺序和采样时间
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL1, 1, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL2, 2, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL3, 3, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL4, 4, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL5, 5, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL6, 6, ADC_SampleTime_55Cycles5);
 	
-	/* Enable ADC1 */
-	ADC_Cmd(ADC1, ENABLE);
+	// 使能ADC DMA 请求
+	ADC_DMACmd(ADC_x, ENABLE);
 	
-	/*复位校准寄存器 */   
-	ADC_ResetCalibration(ADC1);
-	/*等待校准寄存器复位完成 */
-	while(ADC_GetResetCalibrationStatus(ADC1));
+	// 开启ADC ，并开始转换
+	ADC_Cmd(ADC_x, ENABLE);
 	
-	/* ADC校准 */
-	ADC_StartCalibration(ADC1);
-	/* 等待校准完成*/
-	while(ADC_GetCalibrationStatus(ADC1));
+	// 初始化ADC 校准寄存器  
+	ADC_ResetCalibration(ADC_x);
+	// 等待校准寄存器初始化完成
+	while(ADC_GetResetCalibrationStatus(ADC_x));
 	
-	/* 由于没有采用外部触发，所以使用软件触发ADC转换 */ 
-	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+	// ADC开始校准
+	ADC_StartCalibration(ADC_x);
+	// 等待校准完成
+	while(ADC_GetCalibrationStatus(ADC_x));
+	
+	// 由于没有采用外部触发，所以使用软件触发ADC转换 
+	ADC_SoftwareStartConvCmd(ADC_x, ENABLE);
 }
 
 /**
-  * @brief  ADC1初始化
+  * @brief  ADC初始化
   * @param  无
   * @retval 无
   */
-void ADC1_Init(void)
+void ADCx_Init(void)
 {
-	ADC1_GPIO_Config();
-	ADC1_Mode_Config();
+	ADCx_GPIO_Config();
+	ADCx_Mode_Config();
 }
 /*********************************************END OF FILE**********************/

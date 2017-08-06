@@ -8,11 +8,15 @@ Project File Date:  08/06/2017
 
 <h2>Output:</h2>
 Build target '液晶触摸'
+compiling main.c...
 linking...
-Program Size: Code=8752 RO-data=336 RW-data=60 ZI-data=1028  
+Program Size: Code=12724 RO-data=1476 RW-data=132 ZI-data=1140  
 FromELF: creating hex file...
 "..\..\Output\Template.axf" - 0 Error(s), 0 Warning(s).
-Load "..\\..\\Output\\Template.axf" 
+</pre>
+</body>
+</html>
+late.axf" 
 Set JLink Project File to "D:\百度云盘以及下载的资料\stm32野火资料\32\C盘\02-野火ISO-MINI 程序\02-野火ISO-MINI-V2 程序\25、液晶触摸\Project\RVMDK（uv4）\JLinkSettings.ini"
 * JLink Info: Device "STM32F103VE" selected (512 KB flash, 64 KB RAM).
  
@@ -55,10 +59,17 @@ Verify OK.
 * JLink Info: ETM fitted.
 * JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
 Application running ...
-</pre>
-</body>
-</html>
-ashBP, JFlash, GDBFull 
+Load "..\\..\\Output\\Template.axf" 
+Set JLink Project File to "D:\百度云盘以及下载的资料\stm32野火资料\32\C盘\02-野火ISO-MINI 程序\02-野火ISO-MINI-V2 程序\25、液晶触摸\Project\RVMDK（uv4）\JLinkSettings.ini"
+* JLink Info: Device "STM32F103VE" selected (512 KB flash, 64 KB RAM).
+ 
+JLink info:
+------------
+DLL: V4.58a, compiled Dec  5 2012 18:38:08
+Firmware: J-Link ARM V7 compiled Jun 20 2012 19:45:53
+Hardware: V7.00
+S/N : 19087980 
+Feature(s) : RDI, FlashDL, FlashBP, JFlash, GDBFull 
  
 * JLink Info: TotalIRLen = 9, IRPrint = 0x0011
 * JLink Info: TotalIRLen = 9, IRPrint = 0x0011
@@ -75,7 +86,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103VE
-VTarget = 3.216V
+VTarget = 3.222V
 State of Pins: 
 TCK: 1, TDI: 0, TDO: 1, TMS: 0, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
@@ -91,44 +102,123 @@ Verify OK.
 * JLink Info: ETM fitted.
 * JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
 Application running ...
-ings, 9 errors
-"..\..\Output\Template.axf" - 9 Error(s), 6 Warning(s).
+Load "..\\..\\Output\\Template.axf" 
+Set JLink Project File to "D:\百度云盘以及下载的资料\stm32野火资料\32\C盘\02-野火ISO-MINI 程序\02-野火ISO-MINI-V2 程序\25、液晶触摸\Project\RVMDK（uv4）\JLinkSettings.ini"
+* JLink Info: Device "STM32F103VE" selected (512 KB flash, 64 KB RAM).
+ 
+JLink info:
+------------
+DLL: V4.58a, compiled Dec  5 2012 18:38:08
+Firmware: J-Link ARM V7 compiled Jun 20 2012 19:45:53
+Hardware: V7.00
+S/N : 19087980 
+Feature(s) : RDI, FlashDL, FlashBP, JFlash, GDBFull 
+ 
+* JLink Info: TotalIRLen = 9, IRPrint = 0x0011
+* JLink Info: TotalIRLen = 9, IRPrint = 0x0011
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+ 
+Target info:
+------------
+Device: STM32F103VE
+VTarget = 3.235V
+State of Pins: 
+TCK: 1, TDI: 0, TDO: 1, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 1000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+Application running ...
+etCalibrationStatus(ADC_x));
+..\..\User\lcd\bsp_adc.c(133): warning:  #223-D: function "ADC_StartCalibration" declared implicitly
+        ADC_StartCalibration(ADC_x);
+..\..\User\lcd\bsp_adc.c(135): warning:  #223-D: function "ADC_GetCalibrationStatus" declared implicitly
+        while(ADC_GetCalibrationStatus(ADC_x));
+..\..\User\lcd\bsp_adc.c(138): warning:  #223-D: function "ADC_SoftwareStartConvCmd" declared implicitly
+        ADC_SoftwareStartConvCmd(ADC_x, ENABLE);
+..\..\User\lcd\bsp_adc.c: 12 warnings, 20 errors
+"..\..\Output\Template.axf" - 20 Error(s), 12 Warning(s).
 Target not created
-rror:  #20: identifier "USART1_DR_Base" is undefined
-                DMA_InitStructure.DMA_PeripheralBaseAddr = USART1_DR_Base;         
-..\..\User\usart\bsp_usart1.c(76): error:  #20: identifier "DMA_DIR_PeripheralDST" is undefined
-                DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;      
-..\..\User\usart\bsp_usart1.c(82): error:  #20: identifier "DMA_PeripheralInc_Disable" is undefined
-                DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; 
-..\..\User\usart\bsp_usart1.c(85): error:  #20: identifier "DMA_MemoryInc_Enable" is undefined
-                DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
-..\..\User\usart\bsp_usart1.c(88): error:  #20: identifier "DMA_PeripheralDataSize_Byte" is undefined
-                DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
-..\..\User\usart\bsp_usart1.c(91): error:  #20: identifier "DMA_MemoryDataSize_Byte" is undefined
-                DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;  
-..\..\User\usart\bsp_usart1.c(95): error:  #20: identifier "DMA_Mode_Circular" is undefined
-                DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;  
-..\..\User\usart\bsp_usart1.c(98): error:  #20: identifier "DMA_Priority_Medium" is undefined
-                DMA_InitStructure.DMA_Priority = DMA_Priority_Medium;  
-..\..\User\usart\bsp_usart1.c(101): error:  #20: identifier "DMA_M2M_Disable" is undefined
-                DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
-..\..\User\usart\bsp_usart1.c(104): warning:  #223-D: function "DMA_Init" declared implicitly
-                DMA_Init(DMA1_Channel4, &DMA_InitStructure);       
-..\..\User\usart\bsp_usart1.c(107): warning:  #223-D: function "DMA_Cmd" declared implicitly
-                DMA_Cmd (DMA1_Channel4,ENABLE);                                 
-..\..\User\usart\bsp_usart1.c(115): warning:  #223-D: function "USART_SendData" declared implicitly
-                USART_SendData(USART1, (uint8_t) ch);
-..\..\User\usart\bsp_usart1.c(118): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);            
-..\..\User\usart\bsp_usart1.c(118): error:  #20: identifier "USART_FLAG_TC" is undefined
-                while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);            
-..\..\User\usart\bsp_usart1.c(127): warning:  #223-D: function "USART_GetFlagStatus" declared implicitly
-                while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
-..\..\User\usart\bsp_usart1.c(127): error:  #20: identifier "USART_FLAG_RXNE" is undefined
-                while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
-..\..\User\usart\bsp_usart1.c(129): warning:  #223-D: function "USART_ReceiveData" declared implicitly
-                return (int)USART_ReceiveData(USART1);
-..\..\User\usart\bsp_usart1.c: 8 warnings, 20 errors
-compiling bsp_ds18b20.c...
-"..\..\Output\Template.axf" - 20 Error(s), 10 Warning(s).
-Target not created
+compiling bsp_adc.c...
+..\..\User\lcd\bsp_adc.c(37): error:  #20: identifier "DMA_InitTypeDef" is undefined
+        DMA_InitTypeDef DMA_InitStructure;
+..\..\User\lcd\bsp_adc.c(38): error:  #20: identifier "ADC_InitTypeDef" is undefined
+        ADC_InitTypeDef ADC_InitStructure;
+..\..\User\lcd\bsp_adc.c(46): warning:  #223-D: function "DMA_DeInit" declared implicitly
+        DMA_DeInit(ADC_DMA_CHANNEL);
+..\..\User\lcd\bsp_adc.c(56): error:  #20: identifier "DMA_DIR_PeripheralSRC" is undefined
+        DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
+..\..\User\lcd\bsp_adc.c(62): error:  #20: identifier "DMA_PeripheralInc_Disable" is undefined
+        DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+..\..\User\lcd\bsp_adc.c(65): error:  #20: identifier "DMA_MemoryInc_Enable" is undefined
+        DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
+..\..\User\lcd\bsp_adc.c(68): error:  #20: identifier "DMA_PeripheralDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+..\..\User\lcd\bsp_adc.c(71): error:  #20: identifier "DMA_MemoryDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+..\..\User\lcd\bsp_adc.c(74): error:  #20: identifier "DMA_Mode_Circular" is undefined
+        DMA_InitStructure.DMA_Mode = DMA_Mode_Circular; 
+..\..\User\lcd\bsp_adc.c(77): error:  #20: identifier "DMA_Priority_High" is undefined
+        DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+..\..\User\lcd\bsp_adc.c(80): error:  #20: identifier "DMA_M2M_Disable" is undefined
+        DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+..\..\User\lcd\bsp_adc.c(83): warning:  #223-D: function "DMA_Init" declared implicitly
+        DMA_Init(ADC_DMA_CHANNEL, &DMA_InitStructure);
+..\..\User\lcd\bsp_adc.c(86): warning:  #223-D: function "DMA_Cmd" declared implicitly
+        DMA_Cmd(ADC_DMA_CHANNEL , ENABLE);
+..\..\User\lcd\bsp_adc.c(90): error:  #20: identifier "ADC_Mode_Independent" is undefined
+        ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+..\..\User\lcd\bsp_adc.c(99): error:  #20: identifier "ADC_ExternalTrigConv_None" is undefined
+        ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+..\..\User\lcd\bsp_adc.c(102): error:  #20: identifier "ADC_DataAlign_Right" is undefined
+        ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+..\..\User\lcd\bsp_adc.c(108): warning:  #223-D: function "ADC_Init" declared implicitly
+        ADC_Init(ADC_x, &ADC_InitStructure);
+..\..\User\lcd\bsp_adc.c(114): warning:  #223-D: function "ADC_RegularChannelConfig" declared implicitly
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL1, 1, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(114): error:  #20: identifier "ADC_Channel_10" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL1, 1, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(114): error:  #20: identifier "ADC_SampleTime_55Cycles5" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL1, 1, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(115): error:  #20: identifier "ADC_Channel_11" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL2, 2, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(116): error:  #20: identifier "ADC_Channel_12" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL3, 3, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(117): error:  #20: identifier "ADC_Channel_13" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL4, 4, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(118): error:  #20: identifier "ADC_Channel_14" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL5, 5, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(119): error:  #20: identifier "ADC_Channel_15" is undefined
+        ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL6, 6, ADC_SampleTime_55Cycles5);
+..\..\User\lcd\bsp_adc.c(122): warning:  #223-D: function "ADC_DMACmd" declared implicitly
+        ADC_DMACmd(ADC_x, ENABLE);
+..\..\User\lcd\bsp_adc.c(125): warning:  #223-D: function "ADC_Cmd" declared implicitly
+        ADC_Cmd(ADC_x, ENABLE);
+..\..\User\lcd\bsp_adc.c(128): warning:  #223-D: function "ADC_ResetCalibration" declared implicitly
+        ADC_ResetCalibration(ADC_x);
+..\..\User\lcd\bsp_adc.c(130): warning:  #223-D: function "ADC_GetResetCalibrationStatus" declared implicitly
+        while(ADC_GetResetCalibrationStatus(ADC_x));
+..\..\User\lcd\bsp_adc.c(133): warning:  #223-D: function "ADC_StartCalibration" declared implicitly
+        ADC_StartCalibration(ADC_x);
+..\..\User\lcd\bsp_adc.c(135): warning:  #223-D: function "ADC_GetCalibrationStatus" declared implicitly
+        while(ADC_GetCalibrationStatus(ADC_x));
+..\..\User\lcd\bsp_adc.c(138): warning:  #223-D: function "ADC_SoftwareStartConvCmd" declared implicitly
+        ADC_SoftwareStartConvCmd(ADC_x, ENABLE);
+..\..\User\lcd\bsp_adc.c: 12 warnings, 20 errors
+"..\..\User\lcd\bsp_adc.c" - 20 Error(s), 12 Warning(s).

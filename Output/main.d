@@ -4,8 +4,10 @@
 ..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 ..\..\output\main.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\main.o: ..\..\User\stm32f10x_conf.h
-..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_exti.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
 ..\..\output\main.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_dma.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_exti.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_fsmc.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_i2c.h
