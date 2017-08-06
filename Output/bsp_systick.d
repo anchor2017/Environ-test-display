@@ -11,4 +11,5 @@
 ..\..\output\bsp_systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
 ..\..\output\bsp_systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_i2c.h
 ..\..\output\bsp_systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\bsp_systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\bsp_systick.o: ..\..\Libraries\FWlib\inc\misc.h

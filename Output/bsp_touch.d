@@ -11,6 +11,7 @@
 ..\..\output\bsp_touch.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
 ..\..\output\bsp_touch.o: ..\..\Libraries\FWlib\inc\stm32f10x_i2c.h
 ..\..\output\bsp_touch.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\bsp_touch.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\bsp_touch.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\bsp_touch.o: ..\..\User\touch\bsp_gpio_spi.h
 ..\..\output\bsp_touch.o: ..\..\User\Lcd\bsp_ili9341_lcd.h

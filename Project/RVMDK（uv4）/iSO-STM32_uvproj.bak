@@ -364,7 +364,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\Led;..\..\User\Lcd;..\..\User\SysTick;..\..\User\touch;..\..\User\usart</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\Led;..\..\User\Lcd;..\..\User\SysTick;..\..\User\touch;..\..\User\usart;..\..\User\ds18b20</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -561,6 +561,11 @@
               <FileName>bsp_usart1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\usart\bsp_usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_ds18b20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\ds18b20\bsp_ds18b20.c</FilePath>
             </File>
           </Files>
         </Group>

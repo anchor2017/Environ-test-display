@@ -46,26 +46,29 @@ int main(void)
 	uint16_t index;
 	/* 系统定时器 1us 定时初始化 */
   SysTick_Init();
-	  
-  LCD_Init();	
-  /* GRAM扫描方向为左下脚->右上角 */
-  Lcd_GramScan(2);
-  LCD_Clear(0, 0, 320, 240, RED);
-  ADC1_Init();
-/*------------------------------------------------------------------------------------------------------*/
-  
-  /* 触摸屏IO和中断初始化 */
-  Touch_Init();
+	LCD_Init();	
+	
+	USART1_Config();
+	ADC1_Init();
 	DS18B20_Init();
 	
+  /* GRAM扫描方向为左下脚->右上角 */
+  //Lcd_GramScan(2);
+  //LCD_Clear(0, 0, 320, 240, RED);
+	
+	  /* 触摸屏IO和中断初始化 */
+ // Touch_Init();
+  
+/*------------------------------------------------------------------------------------------------------*/
+  		
 	while(1)
 	{
-		printf("this is a debug info");
+		printf("\r\n this is debug info \r\n");
 		ADC_ConvertedValueLocal =(float) ADC_ConvertedValue/4096*3.3; // 读取转换的AD值
 		printf("\r\n CO2: %lf \r\n", ADC_ConvertedValueLocal);
 		
-		printf("\r\n CO2: %.1f \r\n", DS18B20_Get_Temp());
-		Delay(0xffffee);
+		printf("\r\n Temp: %.1f \r\n", DS18B20_Get_Temp());
+		Delay(0xffffff);
 	}
 		
 	while(Touch_Calibrate());

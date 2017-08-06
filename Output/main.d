@@ -10,6 +10,7 @@
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_i2c.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\main.o: ..\..\User\Lcd\bsp_ili9341_lcd.h
 ..\..\output\main.o: ..\..\User\SysTick\bsp_SysTick.h
