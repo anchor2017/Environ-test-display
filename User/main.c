@@ -43,9 +43,11 @@ extern volatile unsigned char touch_flag;
   */
 int main(void)
 {	
+	LCD_Init();
+	
 	/* 系统定时器 1us 定时初始化 */
   SysTick_Init();
-	LCD_Init();	
+	Delay(0xff);
 	
 	USART1_Config();
 	ADCx_Init();
@@ -53,6 +55,7 @@ int main(void)
 	
   /* GRAM扫描方向为左下脚->右上角 */
   Lcd_GramScan(2);
+	Delay(0xff);
   LCD_Clear(0, 0, 320, 240, BACKGROUND);
 	
 	  /* 触摸屏IO和中断初始化 */
@@ -60,30 +63,65 @@ int main(void)
   
 /*------------------------------------------------------------------------------------------------------*/
 	
-
+/*
 		printf("\r\n this is debug info \r\n");
 		
 		ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3;
-			ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3;
+		ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3;
 		
 			printf("\r\n CH0 value = %f V \r\n",ADC_ConvertedValueLocal[0]);
 			printf("\r\n CH1 value = %f V \r\n",ADC_ConvertedValueLocal[1]);	
 		
 		printf("\r\n Temp: %.1f \r\n", DS18B20_Get_Temp());
 		Delay(0xffffff);
+*/
 		
 	while(Touch_Calibrate());
+	LCD_Clear(0, 0, 320, 240, BACKGROUND);
   
 	while( 1 )
   {
+		ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3*100;
+		ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3*100;
 		
-		/*获取点的坐标*/
+		LCD_DisNum(10, 10, ADC_ConvertedValueLocal[0], RED);
+		LCD_DisNum(10, 50, ADC_ConvertedValueLocal[1], RED);
+		LCD_DisNum(10, 100, DS18B20_Get_Temp(), RED);
+		
+		Delay(0xfffff);
+//------------------------		
+		ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3*100;
+		ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3*100;
+		
+		LCD_DisNum(100, 10, ADC_ConvertedValueLocal[0], RED);
+		LCD_DisNum(100, 50, ADC_ConvertedValueLocal[1], RED);
+		LCD_DisNum(100, 100, DS18B20_Get_Temp(), RED);
+		
+		Delay(0xfffff);
+//--------------------------		
+		ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3*100;
+		ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3*100;
+		
+		LCD_DisNum(200, 10, ADC_ConvertedValueLocal[0], RED);
+		LCD_DisNum(200, 50, ADC_ConvertedValueLocal[1], RED);
+		LCD_DisNum(200, 100, DS18B20_Get_Temp(), RED);
+		
+		Delay(0xfffff);
+//--------------------------
+		ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3*100;
+		ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3*100;
+		
+		LCD_DisNum(300, 10, ADC_ConvertedValueLocal[0], RED);
+		LCD_DisNum(300, 50, ADC_ConvertedValueLocal[1], RED);
+		LCD_DisNum(300, 100, DS18B20_Get_Temp(), RED);
+		
+		Delay(0xfffff );
+		
+		/*
       if(Get_touch_point(&display, Read_2046_2(), &touch_para ) !=DISABLE)      
       {					
         if(display.x>0 && display.x<160)
 				{
-
-
 					while(1)
 					{
 							LCD_Clear(0, 0, 320, 240, BLUE);
@@ -96,7 +134,6 @@ int main(void)
 								}
 							}
 					}
-
 			}
 				
 				if(display.x>160 && display.x<320)
@@ -118,7 +155,7 @@ int main(void)
 				}
 					
       }
-
+		*/
   }
 }
 

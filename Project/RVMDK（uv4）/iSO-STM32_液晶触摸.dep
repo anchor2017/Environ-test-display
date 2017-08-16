@@ -203,7 +203,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_i2c.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\stm32f10x_rcc.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x536651CE)
-F (..\..\User\main.c)(0x5986D707)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc -I..\..\User\Led -I..\..\User\Lcd -I..\..\User\SysTick -I..\..\User\touch -I..\..\User\usart -I..\..\User\ds18b20-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x5988780A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc -I..\..\User\Led -I..\..\User\Lcd -I..\..\User\SysTick -I..\..\User\touch -I..\..\User\usart -I..\..\User\ds18b20-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x536651CE)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x536651CE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -292,7 +292,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_i2c.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\stm32f10x_rcc.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x536651CE)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x536651CE)
-F (..\..\User\touch\bsp_touch.c)(0x59868189)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc -I..\..\User\Led -I..\..\User\Lcd -I..\..\User\SysTick -I..\..\User\touch -I..\..\User\usart -I..\..\User\ds18b20-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_touch.o --omf_browse ..\..\output\bsp_touch.crf --depend ..\..\output\bsp_touch.d)
+F (..\..\User\touch\bsp_touch.c)(0x59887809)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc -I..\..\User\Led -I..\..\User\Lcd -I..\..\User\SysTick -I..\..\User\touch -I..\..\User\usart -I..\..\User\ds18b20-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_touch.o --omf_browse ..\..\output\bsp_touch.crf --depend ..\..\output\bsp_touch.d)
 I (..\..\User\touch\bsp_touch.h)(0x5985B83C)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x536651CE)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x536651CE)
